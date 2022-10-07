@@ -2,7 +2,7 @@ import SearchBox from "../../components/SearchBox";
 
 const Votes = () => {
     return(
-        <div className="container px-4 mx-auto main-grid grid">
+        <div className="w-5/6 px-10 md:px-16 lg:px-24 pb-10 grid mx-auto main-grid">
             <SearchBox />
 
 

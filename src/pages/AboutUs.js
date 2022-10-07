@@ -1,6 +1,6 @@
 function AboutUs() {
     return (
-        <div className="container px-4 mx-auto main-grid grid">
+        <div className="w-5/6 px-10 md:px-16 lg:px-24 pb-10 grid mx-auto main-grid">
             <h1 className="font-bold text-4xl leading-normal mt-5">About us</h1>
             <div className="about-content">
             Hinc ille commotus ut iniusta perferens et indigna praefecti custodiam protectoribus mandaverat fidis. quo conperto Montius tunc quaestor acer quidem sed ad lenitatem propensior, consulens in commune advocatos palatinarum primos scholarum adlocutus est mollius docens nec decere haec fieri nec prodesse addensque vocis obiurgatorio sonu quod si id placeret, post statuas Constantii deiectas super adimenda vita praefecto conveniet securius cogitari.

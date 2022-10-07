@@ -16,9 +16,9 @@ function Propositions() {
 
 
     return (
-        <div className="container px-4 mx-auto main-grid grid">
+        <div className="w-5/6 px-10 md:px-16 lg:px-24 pb-10 grid mx-auto main-grid">
             <div className="header-part flex justify-between">
-                <div className="heading mt-5">
+                <div className="heading mt-5 w-full">
                     <h1 className="font-bold text-4xl leading-normal">Propostions</h1>
                     {
                         showSubmitProposition && 
@@ -39,7 +39,7 @@ function Propositions() {
                                 <input type="checkbox" id="distribution"  />
                                 <label htmlFor="distribution" className="ml-3">Distribution of dividends</label>
                             </div>
-                            <textarea className="indent-2" style={{ width:"1000px", height:"342px" }}></textarea>
+                            <textarea className="indent-2 w-full h-56"></textarea>
                             <button className="text-white bg-black rounded-lg text-2xl px-6 py-1 mb-4 mt-5" type="button">submit</button>
                         </div>
                     }
@@ -67,13 +67,13 @@ function Propositions() {
             <div className="proposition-list">
 
                 <div className="ppt-card flex justify-between bg-yellow-100 rounded-lg mt-5 p-5">
-                    <div className="">
+                    <div className="w-2/3">
                         <h4 className="font-bold text-2xl">Disbursement of funds</h4>
                         <div className="text-xl">De <Link className="underline" to="/proposition/article">0x1625372828zde123332</Link></div>
 
                         <ProgressVar
                             class="text-right"
-                            width="590px"
+                            width="100%"
                             progress="56"
                             statusStyle={{marginTop:'-15px'}}
                             varStyle={{}}
@@ -81,7 +81,7 @@ function Propositions() {
 
                         <button className="text-black bg-yellow-400 rounded-lg text-2xl px-6 py-1 mb-4 mt-5" type="button">See more</button>
                     </div>
-                    <div className="text-right relative">
+                    <div className="text-right relative w-1/3">
                         <div className="ttp-right-top">
                             <h4 className="font-bold text-2xl">Creation XX/XX/XX</h4>
                             <button className="font-bold text-black bg-yellow-400 rounded-lg text-xl px-5 mb-4" type="button">J-14</button>

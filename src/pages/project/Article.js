@@ -6,7 +6,7 @@ const Article = () => {
     const [ moreArt, setMoreArt ] = useState(false);
 
     return (
-        <div className="container px-4 mx-auto main-grid grid">
+        <div className="w-5/6 px-10 md:px-16 lg:px-24 pb-10 grid mx-auto main-grid">
             <div className='art-container'>
                 <div className='flex justify-between mt-5'>
                     <div className='pj-art-top-left w-2/3'>
@@ -49,7 +49,7 @@ const Article = () => {
                             
                             <div className="contact-person mt-5">
                                 <h2 className="font-bold text-2xl leading-normal mb-2">Contact person</h2>
-                                <div className="flex">
+                                <div className="flex flex-wrap">
                                     <div className="flex-none input-group">
                                         <div className="font-bold">Name</div>
                                         <div className='w-80'>amque non</div>
@@ -59,7 +59,7 @@ const Article = () => {
                                         <div className='w-80'>amque non</div>
                                     </div>
                                 </div>
-                                <div className="flex">
+                                <div className="flex flex-wrap">
                                     <div className="flex-none input-group">
                                         <div className="font-bold">Telephone</div>
                                         <div className='w-96'>amque non</div>

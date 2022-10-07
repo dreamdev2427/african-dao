@@ -1,6 +1,6 @@
 const UploadAvatar = () => {
     return(
-        <div className="container px-4 mx-auto main-grid grid">
+        <div className="w-5/6 px-10 md:px-16 lg:px-24 pb-10 grid mx-auto main-grid">
             <div className="flex mt-5">
                 <img src="/imgs/avatar.png" className="rounded-full" width={148} style={{border:'8px solid #FFC917', height:'148px'}} alt="" />
                 <div className="mt-9 ml-4">

@@ -2,7 +2,7 @@ import ProgressVar from '../../components/ProgressVar';
 
 const Article = () => {
     return (
-        <div className="container px-4 mx-auto main-grid grid">
+        <div className="w-5/6 px-10 md:px-16 lg:px-24 pb-10 grid mx-auto main-grid">
             <div className="header-selection flex justify-between mt-5">
                 <div className="">
                     <h3 className="font-bold text-4xl leading-normal">Disbursement of funs</h3>

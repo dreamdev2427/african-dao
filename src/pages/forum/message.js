@@ -2,7 +2,7 @@ import ForumCard from "../../components/ForumCard";
 
 const Message = () => {
     return(
-        <div className="container px-4 mx-auto main-grid grid">
+        <div className="w-5/6 px-10 md:px-16 lg:px-24 pb-10 grid mx-auto main-grid">
             <h1 className="font-bold text-4xl leading-normal mt-5">Forum / <span className="text-xl">Selected topic</span></h1>
 
             <div className="forum-lists">

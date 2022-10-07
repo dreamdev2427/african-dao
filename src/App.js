@@ -33,17 +33,18 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/project/add" element={<AddProject />} />
           <Route path="/project/article" element={<ProjectArticle />} />
-
           <Route path="/propositions" element={<Propositions />} />
           <Route path="/proposition/article" element={<PropositionArticle />} />
           <Route path="/about" element={<AboutUs />} />
-          {/* 
-          <Route path="/forum" element={ <Forum /> } />
-          <Route path="/forum/select_topic" element={ <SelectTopic /> } />
-          
 
-          <Route path="/profile" element={ <AccountPage /> } />
-          <Route path="/profile/upload_avatar" element={ <UploadAvatar /> } /> */}
+
+
+          {/* <Route path="/forum" element={<Forum />} />
+          <Route path="/forum/select_topic" element={<SelectTopic />} />
+
+
+          <Route path="/profile" element={<AccountPage />} />
+          <Route path="/profile/upload_avatar" element={<UploadAvatar />} /> */}
         </Routes>
       </main>
     </div>

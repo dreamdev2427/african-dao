@@ -22,7 +22,6 @@ main{
   border-radius: 10px;
   background-color: #fff;
   min-height: 200px;
-  padding: 0 85px 30px 85px;
 }
 
 @media screen and (min-width: 1280px) {
