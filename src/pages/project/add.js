@@ -7,12 +7,12 @@ const AddProject = () => {
     }, []);
 
     return (
-        <div className="w-5/6 px-10 md:px-16 lg:px-24 pb-10 grid mx-auto main-grid">
+        <div className="w-11/12 sm:w-5/6 px-3 sm:px-10 md:px-16 lg:px-24 pb-10 grid mx-auto main-grid">
             <h1 className="font-bold text-4xl leading-normal mt-5">Projects</h1>
 
             <div className="title-of-project mt-3">
                 <h2 className="font-bold text-2xl leading-normal mb-2">Title of your project</h2>
-                <input type='text' class="input-default w-96" />
+                <input type='text' class="input-default w-80 sm:w-96 sm:mr-5" />
             </div>
 
             <div className="select-your-domain mt-3">
@@ -41,27 +41,27 @@ const AddProject = () => {
                 <div className="flex flex-wrap">
                     <div className="flex-none input-group">
                         <div className="font-bold">Name</div>
-                        <input type="text" className="input-default" />
+                        <input type="text" className="input-default sm:mr-5" />
                     </div>
                     <div className="flex-none input-group">
                         <div className="font-bold">First name</div>
-                        <input type="text" className="input-default" />
+                        <input type="text" className="input-default sm:mr-5" />
                     </div>
                 </div>
                 <div className="flex flex-wrap">
                     <div className="flex-none input-group">
                         <div className="font-bold">Telephone</div>
-                        <input type="text" className="input-default w-96" />
+                        <input type="text" className="input-default w-80 sm:w-96 sm:mr-5" />
                     </div>
                     <div className="flex-none input-group">
                         <div className="font-bold">LinkedIn</div>
-                        <input type="text" className="input-default w-96" />
+                        <input type="text" className="input-default w-80 sm:w-96 sm:mr-5" />
                     </div>
                 </div>
                 <div className="flex">
                     <div className="flex-none input-group">
                         <div className="font-bold">Email</div>
-                        <input type="email" className="input-default w-96" />
+                        <input type="email" className="input-default w-80 sm:w-96 sm:mr-5" />
                     </div>
                 </div>
             </div>
@@ -73,25 +73,25 @@ const AddProject = () => {
                         <i className="fa fa-plus-circle text-2xl"></i>
                         <span className="ml-2 font-bold">Add a person</span>
                     </div>
-                    <div className="person-info card-box ml-8">
+                    <div className="person-info card-box sm:ml-8">
                         <div className="flex flex-wrap">
                             <div className="flex-none input-group">
                                 <div className="font-bold">Name</div>
-                                <input type="text" className="input-default" style={{width: '253px'}} />
+                                <input type="text" className="input-default w-60 sm:mr-5" />
                             </div>
                             <div className="flex-none input-group">
                                 <div className="font-bold">Fast Name</div>
-                                <input type="text" className="input-default" style={{width: '253px'}} />
+                                <input type="text" className="input-default w-60 sm:mr-5" />
                             </div>
                         </div>
                         <div className="flex flex-wrap">
                             <div className="flex-none input-group">
                                 <div className="font-bold">Telephone</div>
-                                <input type="text" className="input-default" style={{width: '360px'}} />
+                                <input type="text" className="input-default w-80 sm:mr-5" />
                             </div>
                             <div className="flex-none input-group">
                                 <div className="font-bold">LinkedIn</div>
-                                <input type="text" className="input-default" style={{width: '360px'}} />
+                                <input type="text" className="input-default w-80 sm:mr-5" />
                             </div>
                         </div>
                         <div>
@@ -103,7 +103,7 @@ const AddProject = () => {
 
             <div className="how-long-age mt-5">
                 <h2 className="font-bold text-2xl leading-normal mb-2">How long ago did you create your project?</h2>
-                <input type='text' class="input-default w-96" />
+                <input type='text' class="input-default w-80 sm:w-96 sm:mr-5" />
             </div>
 
             <div className="project-phase mt-3">
@@ -153,12 +153,12 @@ const AddProject = () => {
 
             <div className="how-do-you-earn-money mt-5">
                 <h2 className="font-bold text-2xl leading-normal mb-2">How do you earn money?</h2>
-                <input type='text' class="input-default w-96" />
+                <input type='text' class="input-default w-80 sm:w-96 sm:mr-5" />
             </div>
 
             <div className="how-much-need mt-5">
                 <h2 className="font-bold text-2xl leading-normal mb-2">How much do you need?</h2>
-                <input type='text' class="input-default w-96" />
+                <input type='text' class="input-default w-80 sm:w-96 sm:mr-5" />
             </div>
 
             <div className="to-do-what mt-5">
@@ -173,17 +173,17 @@ const AddProject = () => {
                         <i className="fa fa-plus-circle text-2xl"></i>
                         <span className="ml-2 font-bold">Add a link</span>
                     </div>
-                    <div className="person-info card-box ml-8 w-max">
+                    <div className="person-info card-box sm:ml-8 w-max">
                         <div className="flex">
                             <div className="flex-none input-group">
                                 <div className="font-bold">Title</div>
-                                <input type="text" className="input-default" style={{width: '253px'}} />
+                                <input type="text" className="input-default w-60" />
                             </div>
                         </div>
                         <div className="flex">
                             <div className="flex-none input-group">
                                 <div className="font-bold">Link</div>
-                                <input type="text" className="input-default" style={{width: '360px'}} />
+                                <input type="text" className="input-default w-80" />
                             </div>
                         </div>
                         <div>

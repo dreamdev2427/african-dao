@@ -16,13 +16,13 @@ function Propositions() {
 
 
     return (
-        <div className="w-5/6 px-10 md:px-16 lg:px-24 pb-10 grid mx-auto main-grid">
-            <div className="header-part flex justify-between">
+        <div className="w-11/12 sm:w-5/6 px-3 sm:px-10 md:px-16 lg:px-24 pb-10 grid mx-auto main-grid">
+            <div className="header-part sm:flex justify-between">
                 <div className="heading mt-5 w-full">
                     <h1 className="font-bold text-4xl leading-normal">Propostions</h1>
                     {
                         showSubmitProposition && 
-                        <div className="submit-form p-10 rounded-3xl bg-yellow-400 relative">
+                        <div className="submit-form p-7 sm:p-10 rounded-3xl bg-yellow-400 relative">
                             <button className="submit-close-btn absolute top-5 right-5"
                                     onClick={() => onClickToggleSubmitDiv(0) }
                                     ><i className="fa fa-window-close text-xl"></i></button>
@@ -54,7 +54,7 @@ function Propositions() {
                 </div>
                 { 
                     !showSubmitProposition && 
-                    <div className="mt-10">
+                    <div className="mt-5 sm:mt-10">
                         <button className="rounded-3xl bg-yellow-400 flex items-center p-1" 
                             onClick={() => onClickToggleSubmitDiv(1)}>
                             <i className="fa fa-plus-circle text-7xl"></i>
@@ -66,28 +66,27 @@ function Propositions() {
 
             <div className="proposition-list">
 
-                <div className="ppt-card flex justify-between bg-yellow-100 rounded-lg mt-5 p-5">
+            <div className="flex justify-between p-2 md:p-5 mt-5 bg-yellow-100 rounded-lg ppt-card">
                     <div className="w-2/3">
-                        <h4 className="font-bold text-2xl">Disbursement of funds</h4>
-                        <div className="text-xl">De <Link className="underline" to="/proposition/article">0x1625372828zde123332</Link></div>
+                        <h4 className="text-xl md:text-2xl font-bold">Disbursement of funds</h4>
+                        <div className="text-md md:text-xl">De <Link className="underline" to="/proposition/article">0x1625372828zde123332</Link></div>
 
                         <ProgressVar
-                            class="text-right"
-                            width="100%"
-                            progress="56"
-                            statusStyle={{marginTop:'-15px'}}
+                            class="text-right sm:mt-[-15px]"
+                            width="width: 100%;"
+                            progress="70"
                             varStyle={{}}
-                            />
+                        />
 
-                        <button className="text-black bg-yellow-400 rounded-lg text-2xl px-6 py-1 mb-4 mt-5" type="button">See more</button>
+                        <button className="px-6 py-1 mt-5 mb-4 text-xl md:text-2xl text-black bg-yellow-400 rounded-lg" type="button">See more</button>
                     </div>
-                    <div className="text-right relative w-1/3">
+                    <div className="relative text-right w-1/3">
                         <div className="ttp-right-top">
-                            <h4 className="font-bold text-2xl">Creation XX/XX/XX</h4>
-                            <button className="font-bold text-black bg-yellow-400 rounded-lg text-xl px-5 mb-4" type="button">J-14</button>
+                            <h4 className="text-xl md:text-2xl font-bold">Creation XX/XX/XX</h4>
+                            <button className="px-5 mb-4 text-xl font-bold text-black bg-yellow-400 rounded-lg" type="button">J-14</button>
                         </div>
-                        <div className="ttp-right-bottom absolute bottom-0 right-0">
-                            <button className="font-bold text-black bg-yellow-400 rounded-lg text-3xl px-6 py-1 mb-4" type="button">Valider</button>
+                        <div className="absolute bottom-0 right-0 ttp-right-bottom">
+                            <button className="px-6 py-1 mb-4 text-xl md:text-3xl font-bold text-black bg-yellow-400 rounded-lg" type="button">Valider</button>
                         </div>
                     </div>
                 </div>

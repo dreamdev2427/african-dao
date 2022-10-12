@@ -4,8 +4,8 @@ const ArtCard1 = (props) => {
     return (
         <div className="forum-card-1 bg-yellow-100 p-5 mt-4 rounded-xl">
             <h3 className="font-bold text-xl">{ props.title }</h3>
-            <div className="flex justify-between text-xl">
-                <div className=""><Link className="underline" to="{ props.link }">{ props.contractId }</Link></div>
+            <div className="sm:flex justify-between text-xl">
+                <div className=""><Link className="underline" to={ props.link }>{ props.contractId }</Link></div>
                 <div className="">{ props.addedDate }</div>
             </div>
             <div className="forum-content mt-3">

@@ -37,14 +37,11 @@ function App() {
           <Route path="/proposition/article" element={<PropositionArticle />} />
           <Route path="/about" element={<AboutUs />} />
 
-
-
-          {/* <Route path="/forum" element={<Forum />} />
+          <Route path="/forum" element={<Forum />} />
           <Route path="/forum/select_topic" element={<SelectTopic />} />
 
-
           <Route path="/profile" element={<AccountPage />} />
-          <Route path="/profile/upload_avatar" element={<UploadAvatar />} /> */}
+          <Route path="/profile/upload_avatar" element={<UploadAvatar />} />
         </Routes>
       </main>
     </div>

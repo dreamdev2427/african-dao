@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { createPopper } from "@popperjs/core";
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar({ fixed }) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
-    
+
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef();
   const popoverDropdownRef = React.createRef();
+  const navigate = useNavigate();
   const openDropdownPopover = () => {
     createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
       placement: "bottom-start"
@@ -28,16 +30,16 @@ export default function Navbar({ fixed }) {
   return (
     <>
       <nav className="relative flex flex-wrap items-center justify-between mb-3">
-        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+        <div className="container flex flex-wrap items-center justify-between px-4 mx-auto">
+          <div className="relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start">
             <Link
-              className="text-sm font-bold leading-relaxed inline-block mr-4 py-2"
+              className="inline-block py-2 mr-4 text-sm font-bold leading-relaxed"
               to="/"
             >
               <img src="/imgs/mark.png" className="mt-2" width={161} alt="" />
             </Link>
             <button
-              className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+              className="block px-3 py-1 text-xl leading-none text-white bg-transparent border border-transparent border-solid rounded outline-none cursor-pointer lg:hidden focus:outline-none"
               type="button"
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
@@ -47,13 +49,13 @@ export default function Navbar({ fixed }) {
           <div
             className={
               "lg:flex flex-grow items-center justify-between" +
-              (navbarOpen ? " flex" : " hidden")
+              (navbarOpen ? " sm:flex" : " hidden")
             }
           >
-            <ul className="flex flex-col lg:flex-row list-none">
+            <ul className="flex flex-col list-none lg:flex-row">
               <li className="nav-item">
                 <Link
-                  className="px-3 py-2 flex items-center text-xl font-bold leading-snug text-white hover:opacity-75"
+                  className="flex items-center px-3 py-2 text-xl font-bold leading-snug text-white hover:opacity-75"
                   to="/projects"
                 >
                   Projects
@@ -61,7 +63,7 @@ export default function Navbar({ fixed }) {
               </li>
               <li className="nav-item">
                 <Link
-                  className="px-3 py-2 flex items-center text-xl font-bold leading-snug text-white hover:opacity-75"
+                  className="flex items-center px-3 py-2 text-xl font-bold leading-snug text-white hover:opacity-75"
                   to="/propositions"
                 >
                   Propositions
@@ -69,7 +71,7 @@ export default function Navbar({ fixed }) {
               </li>
               <li className="nav-item">
                 <Link
-                  className="px-3 py-2 flex items-center text-xl font-bold leading-snug text-white hover:opacity-75"
+                  className="flex items-center px-3 py-2 text-xl font-bold leading-snug text-white hover:opacity-75"
                   to="/forum"
                 >
                   Forum
@@ -77,69 +79,69 @@ export default function Navbar({ fixed }) {
               </li>
               <li className="nav-item">
                 <Link
-                  className="px-3 py-2 flex items-center text-xl font-bold leading-snug text-white hover:opacity-75"
+                  className="flex items-center px-3 py-2 text-xl font-bold leading-snug text-white hover:opacity-75"
                   to="/about"
                 >
                   About us
                 </Link>
               </li>
             </ul>
-            <div className="lg:flex text-white">
-                {/* <div className="flex">
-                    <span className="items-center mt-2 mr-2">3216548798979</span>
-                    <img src="/imgs/avatar.png" className="rounded-full" width={37} style={{border:'2px solid #FFC917'}} alt="" />
-                </div> */}
-                <button className="text-black font-bold bg-yellow-500 rounded-xl px-5 py-1"
-                  onClick={ () => {} }>Connect your wallet</button>
-                <button
-                    className='ml-3'
-                    type="button"
-                    ref={btnDropdownRef}
-                    onClick={() => {
-                        dropdownPopoverShow
-                        ? closeDropdownPopover()
-                        : openDropdownPopover();
-                    }}
-                    >
-                        <div className="flex">
-                            {
-                              selectedLanguage==="UK" && 
-                              <img src="/imgs/flags/uk.png" width={33} alt="" />
-                            }
-                            {
-                              selectedLanguage==="FR" && 
-                              <img src="/imgs/flags/fr.png" width={33} alt="" />
-                            }
-                            <i className="fa fa-angle-down ml-1"></i>
-                        </div>
-                </button>
-                <div
-                    ref={popoverDropdownRef}
-                    className={
-                        (dropdownPopoverShow ? "block " : "hidden ") +
-                        "text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1"
-                    }
-                    style={{ minWidth: "5rem" }}
-                    >
-                    <a
-                        href="#pablo"
-                        className={
-                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent "
-                        }
-                        onClick={e => handleLanguage('UK')}
-                    >
-                        <img src="/imgs/flags/uk.png" width={33} alt="" />
-                    </a>
-                    <a
-                        href="#pablo"
-                        className={
-                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent "
-                        }
-                        onClick={e => handleLanguage('FR')}
-                    >
-                        <img src="/imgs/flags/fr.png" width={33} alt="" />
-                    </a>
+            <div className="text-white lg:flex">
+              <div className="flex" onClick={() => navigate("/profile")}>
+                <span className="items-center mt-2 mr-2">3216548798979</span>
+                <img src="/imgs/avatar.png" className="rounded-full" width={37} style={{ border: '2px solid #FFC917' }} alt="" />
+              </div>
+              <button className="px-5 py-1 font-bold text-black bg-yellow-500 rounded-xl"
+                onClick={() => { }}>Connect your wallet</button>
+              <button
+                className='ml-3'
+                type="button"
+                ref={btnDropdownRef}
+                onClick={() => {
+                  dropdownPopoverShow
+                    ? closeDropdownPopover()
+                    : openDropdownPopover();
+                }}
+              >
+                <div className="flex">
+                  {
+                    selectedLanguage === "UK" &&
+                    <img src="/imgs/flags/uk.png" width={33} alt="" />
+                  }
+                  {
+                    selectedLanguage === "FR" &&
+                    <img src="/imgs/flags/fr.png" width={33} alt="" />
+                  }
+                  <i className="ml-1 fa fa-angle-down"></i>
                 </div>
+              </button>
+              <div
+                ref={popoverDropdownRef}
+                className={
+                  (dropdownPopoverShow ? "block " : "hidden ") +
+                  "text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1"
+                }
+                style={{ minWidth: "5rem" }}
+              >
+                <a
+                  href="#pablo"
+                  className={
+                    "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent "
+                  }
+                  onClick={e => handleLanguage('UK')}
+                >
+                  <img src="/imgs/flags/uk.png" width={33} alt="" />
+                </a>
+                <a
+                  href="#pablo"
+                  className={
+                    "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent "
+                  }
+                  onClick={e => handleLanguage('FR')}
+                >
+                  <img src="/imgs/flags/fr.png" width={33} alt="" />
+                </a>
+              </div>
             </div>
           </div>
         </div>

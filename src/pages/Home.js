@@ -9,11 +9,11 @@ function Home() {
     const navigate = useNavigate();
 
     return (
-        <div className="grid w-5/6 px-10 pb-10 mx-auto md:px-16 lg:px-24 ">
+        <div className="w-5/6 lg:px-24 pb-10 grid mx-auto">
             <div className="flex justify-center mt-8">
                 <img src="./imgs/logo.png" width={395} alt="" />
             </div>
-            <div className="text-6xl">
+            <div className="text-2xl sm:text-3xl md:text-6xl">
                 <div className="flex justify-center text-white">
                     Invest in web3 to develop
                 </div>
