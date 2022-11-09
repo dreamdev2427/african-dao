@@ -132,7 +132,7 @@ const AddProject = () => {
             </div>
 
             <div className="mt-5 what-are-you-doing-it">
-                <h2 className="mb-2 text-2xl font-bold leading-normal">What are you doing it?</h2>
+                <h2 className="mb-2 text-2xl font-bold leading-normal">Why are you doing it?</h2>
                 <textarea className="w-full input-default" style={{height: '131px'}}></textarea>
             </div>
 

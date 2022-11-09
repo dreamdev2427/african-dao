@@ -109,7 +109,7 @@ const Article = () => {
                             </div>
 
                             <div className="mt-5 what-are-you-doing-it">
-                                <h2 className="mb-2 text-2xl font-bold leading-normal">What are you doing it?</h2>
+                                <h2 className="mb-2 text-2xl font-bold leading-normal">Why are you doing it?</h2>
                                 <div className='w-4/5'>Iamque non umbratis fallaciis res agebatur, sed qua palatium est extra muros, armatis omne circumdedit. ingressusque obscuro iam die, ablatis regiis indumentis Caesarem tunica</div>
                             </div>
 
