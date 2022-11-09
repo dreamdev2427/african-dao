@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import { DApp } from "./app.reducers";
+import {Auth} from "./auth.reducers";
 
 const reducers = combineReducers({
-    dapp: DApp
+    auth: Auth,
 })
 
 export default reducers;

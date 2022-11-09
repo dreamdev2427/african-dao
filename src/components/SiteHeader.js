@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createPopper } from "@popperjs/core";
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,8 @@ import Web3 from "web3";
 import { providerOptions } from "./providerOptions";
 import { networkParams } from "./networks";
 import { toHex, truncateAddress } from "./utils";
+import { useDispatch } from "react-redux";
+import { changeChainId, changeGlobalWeb3, changeWalletAddress, changeWalletStatus } from "../store/actions/auth.actions";
 
 export const web3Modal = new Web3Modal({
   cacheProvider: true,
@@ -27,6 +29,78 @@ export default function Navbar({ fixed }) {
   const [chainId, setChainId] = useState();
   const [network, setNetwork] = useState();
   const [error, setError] = useState("");
+  const [connected, setConnected] =  useState(false);
+  const [compressedAccount, setCompressedAccount] = useState("");
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    if (account) {
+      setConnected(true);
+      dispatch(changeWalletStatus(true));
+    } else setConnected(false);
+  }, [account]);
+
+  useEffect(() => {
+    if (account) {
+      let accountStr = account.toString();
+      setCompressedAccount(
+        accountStr.substring(0, 5) +
+          "..." +
+          accountStr.substring(accountStr.length - 4, accountStr.length)
+      );
+    } else {
+      setCompressedAccount("");
+    }
+  }, [account]);
+
+  const onClickDisconnect = async () => {
+    try {
+      await web3Modal.clearCachedProvider();
+    } catch (e) {}
+    setConnected(false);
+    dispatch(changeChainId(0));
+    dispatch(changeWalletAddress(""));
+    dispatch(changeGlobalWeb3({}));
+    dispatch(changeWalletStatus(false));
+  };
+
+  useEffect(() => {
+    if (provider?.on) {
+      const handleAccountsChanged = (accounts) => {
+        if (accounts[0]) {
+          setConnected(true);
+          setAccount(accounts[0]);
+          dispatch(changeWalletAddress(accounts[0]));
+          dispatch(changeWalletStatus(true));
+        } else {
+          setConnected(false);
+          setAccount("");
+          dispatch(changeWalletAddress(""));
+          dispatch(changeWalletStatus(false));
+        }
+      };
+
+      const handleChainChanged = (chainId) => {
+        dispatch(changeChainId(chainId));
+      };
+
+      const handleDisconnect = () => {
+        onClickDisconnect();
+      };
+
+      provider.on("accountsChanged", handleAccountsChanged);
+      provider.on("chainChanged", handleChainChanged);
+      provider.on("disconnect", handleDisconnect);
+
+      return () => {
+        if (provider.removeListener) {
+          provider.removeListener("accountsChanged", handleAccountsChanged);
+          provider.removeListener("chainChanged", handleChainChanged);
+          provider.removeListener("disconnect", handleDisconnect);
+        }
+      };
+    }
+  }, [provider]);
 
   const connectWallet = async () => {
     try {
@@ -34,12 +108,28 @@ export default function Navbar({ fixed }) {
       const library = new Web3(provider);
       const accounts = await library.eth.getAccounts();
       const chainId = await library.eth.getChainId();
-      setProvider(provider);
-      setLibrary(library);
-      if (accounts) setAccount(accounts[0]);
+      
       setChainId(chainId);
+      setProvider(provider);
+      dispatch(changeGlobalWeb3(library));
+      if (accounts[0]) {
+        setAccount(accounts[0]);
+        dispatch(changeWalletAddress(accounts[0]));
+        setConnected(true);
+        dispatch(changeWalletStatus(true));
+      } else {
+        setConnected(false);
+        setAccount("");
+        dispatch(changeWalletAddress(""));
+        dispatch(changeWalletStatus(false));      
+      }
+      dispatch(changeChainId(chainId));  
     } catch (error) {
-      setError(error);
+      console.error(error);
+      setConnected(false);
+      setAccount("");
+      dispatch(changeWalletStatus(false));      
+      dispatch(changeWalletAddress(""));
     }
   };
 
@@ -149,7 +239,19 @@ export default function Navbar({ fixed }) {
                 <img src="/imgs/avatar.png" className="rounded-full" width={37} style={{ border: '2px solid #FFC917' }} alt="" />
               </div>
               <button className="px-5 py-1 font-bold text-black bg-yellow-500 rounded-xl"
-                onClick={() => { connectWallet() }}>Connect your wallet</button>
+                onClick={() => {
+                  connected == false ?
+                   connectWallet() 
+                   :
+                   onClickDisconnect()
+                }}>
+                  {
+                    connected == false?
+                    "Connect your wallet"
+                    :
+                    compressedAccount
+                  }
+              </button>
               <button
                 className='ml-3'
                 type="button"
