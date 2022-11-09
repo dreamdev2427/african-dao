@@ -10,7 +10,7 @@ const ProgressVar = (props) => {
     }, [props, pVarRef]);
 
     const pStatus = props.statusStyle ? {...props.statusStyle} : {};
-    const pClass = props.class ? props.class : '';
+    const pClass = props.className ? props.className : '';
     const pVarWidth = props.width ? props.width : '100%';
 
     return (
@@ -21,7 +21,7 @@ const ProgressVar = (props) => {
             <div className="progress-var rounded-full bg-yellow-500 p-1.5"
                  style={{ width: pVarWidth }}
                  ref={node => { pVarRef = node; }}>
-                <div className="progress rounded-full bg-yellow-300" style={{ width:progressVarWidth+'px', height:'26px' }}></div>
+                <div className="bg-yellow-300 rounded-full progress" style={{ width:progressVarWidth+'px', height:'26px' }}></div>
             </div>
         </div>        
     );
