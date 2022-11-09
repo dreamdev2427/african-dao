@@ -2,6 +2,16 @@ import React, { useState } from "react";
 import { createPopper } from "@popperjs/core";
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import Web3Modal from "web3modal";
+import Web3 from "web3";
+import { providerOptions } from "./providerOptions";
+import { networkParams } from "./networks";
+import { toHex, truncateAddress } from "./utils";
+
+export const web3Modal = new Web3Modal({
+  cacheProvider: true,
+  providerOptions
+});
 
 export default function Navbar({ fixed }) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -10,6 +20,54 @@ export default function Navbar({ fixed }) {
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef();
   const popoverDropdownRef = React.createRef();
+  const [selectedLanguage, setSelectedLanguage] = useState('UK');
+  const [provider, setProvider] = useState();
+  const [library, setLibrary] = useState();
+  const [account, setAccount] = useState();
+  const [chainId, setChainId] = useState();
+  const [network, setNetwork] = useState();
+  const [error, setError] = useState("");
+
+  const connectWallet = async () => {
+    try {
+      const provider = await web3Modal.connect();
+      const library = new Web3(provider);
+      const accounts = await library.eth.getAccounts();
+      const chainId = await library.eth.getChainId();
+      setProvider(provider);
+      setLibrary(library);
+      if (accounts) setAccount(accounts[0]);
+      setChainId(chainId);
+    } catch (error) {
+      setError(error);
+    }
+  };
+
+  const handleNetwork = (e) => {
+    const id = e.target.value;
+    setNetwork(Number(id));
+  };
+
+  const switchNetwork = async () => {
+    try {
+      await library.provider.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: toHex(network) }]
+      });
+    } catch (switchError) {
+      if (switchError.code === 4902) {
+        try {
+          await library.provider.request({
+            method: "wallet_addEthereumChain",
+            params: [networkParams[toHex(network)]]
+          });
+        } catch (error) {
+          setError(error);
+        }
+      }
+    }
+  };
+
   const navigate = useNavigate();
   const openDropdownPopover = () => {
     createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
@@ -21,7 +79,6 @@ export default function Navbar({ fixed }) {
     setDropdownPopoverShow(false);
   };
 
-  const [selectedLanguage, setSelectedLanguage] = useState('UK');
   const handleLanguage = (param) => {
     setSelectedLanguage(param);
     setDropdownPopoverShow(false);
@@ -92,7 +149,7 @@ export default function Navbar({ fixed }) {
                 <img src="/imgs/avatar.png" className="rounded-full" width={37} style={{ border: '2px solid #FFC917' }} alt="" />
               </div>
               <button className="px-5 py-1 font-bold text-black bg-yellow-500 rounded-xl"
-                onClick={() => { }}>Connect your wallet</button>
+                onClick={() => { connectWallet() }}>Connect your wallet</button>
               <button
                 className='ml-3'
                 type="button"

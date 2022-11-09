@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom"
 import SearchBox from "../../components/SearchBox";
 
 const Votes = () => {
     return (
         <div className="grid w-5/6 px-10 pb-10 mx-auto md:px-16 lg:px-24 main-grid">
             <div className="flex mt-5">
-                <img src="/imgs/avatar.png" className="rounded-full" width={148} style={{ border: '8px solid #FFC917', height: '148px' }} alt="" />
+                <Link to="/profile/upload_avatar">
+                    <img src="/imgs/avatar.png" className="rounded-full" width={148} style={{ border: '8px solid #FFC917', height: '148px' }} alt="" />
+                </Link>
                 <div className="ml-4 mt-9">
                     <div className="text-xl">0x1625372828zde123332</div>
                     <button className="py-1 mt-3 text-black bg-yellow-400 rounded-lg px-7" type="button">Edit Profile</button>
